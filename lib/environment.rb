@@ -1,10 +1,11 @@
-### list dependencies for project
+## List dependencies for project
 
-require "pry"
-require "httparty"  ### Interacts with the api
-require "json"   ### Parsing data from api in json
+require "pry"  
+require "json"  
+require "nokogiri"
+require "open-uri"
 
+require_relative "./cli_project/cli"
+require_relative "./cli_project/scraper"
+require_relative "./cli_project/game"
 
-require_relative "./netflix/cli"
-require_relative "./netflix/api"
-require_relative "./netflix/show"
