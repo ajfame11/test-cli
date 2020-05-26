@@ -4,7 +4,6 @@ class Cli
     welcome
     Scraper.get_games
     display_games
-    display_info
     menu
     goodbye
   end
@@ -24,34 +23,33 @@ class Cli
         end
     end
 
-    def display_info
-        Game.all.each.with_index(1) do |game, i|
-        end
-    end
-
-
     def menu
         input = nil
         while input != "exit"
           puts "Enter the number of the game you want more information on, type list to see list, or exit"
           input = gets.strip.downcase
           
-         if input.to_i > 0 && input.to_i < 11
-            the_game = display_info[input.to_i-1]
-            puts "Name:#{the_game.name}"
-            puts " "
-            puts "Price:#{the_game.price}"
-            puts " "
-            puts "Tags:#{the_game.tags}"
-            puts " "
-            puts "Description:#{the_game.description}"
-            puts "-----------------------------------"
+         if input.to_i > 0 && input.to_i <= Game.all.length
+            the_game = Game.all[input.to_i-1]
+            display_game_info(the_game)
           elsif input == "list"
             display_games
           elsif input != "exit"
             puts "Invalid response."
           end
         end
+      end
+      
+      def display_game_info(the_game)
+        
+        puts "Name:#{the_game.name}"
+        puts " "
+        puts "Price:#{the_game.price}"
+        puts " "
+        puts "Tags:#{the_game.tags}"
+        puts " "
+        puts "Description:#{the_game.description}"
+        puts "-----------------------------------"
       end
 
       def goodbye
