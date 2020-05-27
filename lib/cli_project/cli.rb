@@ -34,6 +34,10 @@ class Cli
             display_game_info(the_game)
           elsif input == "list"
             display_games
+          elsif Game.find_by_name(input)
+            game_object = Game.find_by_name(input)
+            display_game_info(game_object)
+            #we can find this game based on the input because the input was a name 
           elsif input != "exit"
             puts "Invalid response."
           end
